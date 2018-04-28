@@ -20,7 +20,9 @@ class User_c_api extends REST_Controller {
       
       $response = $this->user_m->select_all_user();
     
-      json_output(200,$response);
+      // json_output(200, $response);
+      // echo json_encode($response);
+      json_output(200, array('users' => $response));
 
     // } else {
 
@@ -43,7 +45,7 @@ class User_c_api extends REST_Controller {
       $user_id = (int) $user_id;
       $response = $this->user_m->select_user_where($user_id);
     
-      json_output(200, $response);
+      json_output(200, array('detail' => $response));
     }
 
     // } else {
