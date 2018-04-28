@@ -31,6 +31,13 @@ class User_m extends CI_Model{
     return $query->result();
   }
 
+  public function select_user_where($user_id){
+    $this->db->select('*');
+    $this->db->where('user_id', $user_id);
+    $this->db->from('vf_users');
+    $query = $this->db->get();
+    return $query->row();
+  }
 
   // public function select_users_email_where($email){
 

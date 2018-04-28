@@ -14,19 +14,43 @@ class User_c_api extends REST_Controller {
 
   function user_list_get(){
 
-    $check_auth_client = $this->user_m->check_auth_client();
+    // $check_auth_client = $this->user_m->check_auth_client();
 
-    if($check_auth_client == true){
+    // if($check_auth_client == true){
       
       $response = $this->user_m->select_all_user();
     
       json_output(200,$response);
 
-    } else {
+    // } else {
 
-      json_output(400,array('status' => 400,'message' => 'Bad request.'));
+      // json_output(400,array('status' => 400,'message' => 'Bad request.'));
     
+    // }
+  }
+
+  function user_detail_get($user_id){
+
+    // $check_auth_client = $this->user_m->check_auth_client();
+
+    // if($check_auth_client == true){
+      // $user_id = (int) $this->get('user_id',TRUE);
+
+    $method = $_SERVER['REQUEST_METHOD'];
+    if($method != 'GET' || $this->uri->segment(3) == '' || is_numeric($this->uri->segment(3)) == FALSE){
+      json_output(400,array('status' => 400,'message' => 'Bad request.'));
+    } else {
+      $user_id = (int) $user_id;
+      $response = $this->user_m->select_user_where($user_id);
+    
+      json_output(200, $response);
     }
+
+    // } else {
+
+      // json_output(400,array('status' => 400,'message' => 'Bad request.'));
+    
+    // }
   }
 
   // function daftar_post(){

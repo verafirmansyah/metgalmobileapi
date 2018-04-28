@@ -55,6 +55,7 @@ $route['404_override']         = 'dashboard/dashboard_c';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['api/users']['GET']  = 'user_c_api/user_list';
+$route['api/detail/(:num)']['GET']  = 'user_c_api/user_detail/$1';
 
 //---------------------------------api daftar---------------------------------------------------------
 // $route['api/daftar_cek_email']['POST']  			= 'auth/auth_c_api/daftar_cek_email'; 					//untuk cek email
